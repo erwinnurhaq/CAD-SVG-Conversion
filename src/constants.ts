@@ -1,4 +1,4 @@
-export const BE_URL = import.meta.env.BE_URL || 'http://localhost:5000'
+export const BE_URL = import.meta.env.VITE_BE_URL || process.env.VITE_BE_URL || 'http://localhost:5000'
 
 export const DEFAULT_CONVERSION_PARAMS = [
         { "paramName": "f", "paramValue": "svg" },
