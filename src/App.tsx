@@ -24,7 +24,6 @@ function App() {
   const svgSourceRef = useRef<d3.Selection<d3.BaseType, unknown, null, undefined> | null>(null)
   const zoomBehaviorRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null)
 
-  // const selectedFile = useMemo(() => files.find((file) => file.fileId === selectedFileId), [files, selectedFileId])
   const layers = useMemo<ConversionLayers[]>(() => conversionMetadata?.cadviewer_LayerTable ?? [], [conversionMetadata])
   console.log(layers)
 
@@ -332,7 +331,7 @@ function App() {
         const metadataObj: Record<string, any> = {}
         svgNode.querySelectorAll('metadata text').forEach((el) => {
           const key = el.getAttribute('id')
-          let value = el.textContent.trim()
+          let value = el.textContent?.trim() || ''
 
           // try to parse JSON-like values
           try {
